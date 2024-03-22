@@ -1,0 +1,82 @@
+### author api requests
+## author creation
+
+POST http://localhost:4000/author-api/user
+Content-Type: application/json
+
+{
+    "userType":"author",
+    "username":"vishnu",
+    "password":"vishnu",
+    "email":"vishnuyennam22@gmail.com"
+}
+
+### author login
+
+POST http://localhost:4000/author-api/login
+Content-Type: application/json
+
+{
+    "userType":"author",
+    "username":"vishnu",
+    "password":"vishnu"
+}
+
+### add new the article
+
+POST http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+    "articleId":"{{$timestamp}}",
+    "title":"Fundamentals of Javascript",
+    "category":"programming",
+    "content":"Javascript is a high level programming language",
+    "dateOfCreation":"{{$datetime iso8601}}",
+    "dateOfModification":"{{$datetime iso8601}}",
+    "username":"vishnu",
+    "comments":[],
+    "status":"true"
+}
+
+### get article of same author by username
+
+GET http://localhost:4000/author-api/articles/<username>
+
+### update article by author
+
+PUT http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+    "articleId":"1709442234",
+    "title":"Fundamentals of Javascript",
+    "category":"programming",
+    "content":"Javascript is a article now",
+    "dateOfCreation":"2024-03-03T05:03:54.983Z",
+    "dateOfModification":"{{$datetime iso8601}}",
+    "username":"vishnu",
+    "comments":[],
+    "status":true
+}
+
+### soft delete an article by article id
+
+PUT http://localhost:4000/author-api/article/1709442234
+Content-Type: application/json
+
+{
+    "articleId":"1709442234",
+    "title":"Fundamentals of Javascript",
+    "category":"programming",
+    "content":"Javascript is a article now",
+    "dateOfCreation":"2024-03-03T05:03:54.983Z",
+    "dateOfModification":"{{$datetime iso8601}}",
+    "username":"vishnu",
+    "comments":[],
+    "status":true
+}
+
+### get article of the same author by username
+
+GET http://localhost:4000/author-api/articles/vishnu

@@ -1,0 +1,36 @@
+### user api requests
+### user creation
+POST http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"mani",
+    "password":"mani",
+    "email":"srimanikantabattu04@gmail.com"
+}
+
+### user login
+
+POST http://localhost:4000/user-api/login
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"mani",
+    "password":"mani"
+}
+
+### reading articles of the all users
+
+GET http://localhost:4000/user-api/articles
+
+### write comment
+
+POST http://localhost:4000/user-api/comment/1709442234
+Content-Type: application/json
+
+{
+    "username":"mani",
+    "comment":"Amazing coment yaar"
+}
