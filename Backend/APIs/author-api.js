@@ -21,6 +21,7 @@ authorApp.post(
     "/user",
     expressAsyncHandler(async (req, res) => {
       // get user resource from client
+      console.log("user",req);
       const newUser = req.body;
       // check for duplicate user based on username
       const dbuser = await authorscollection.findOne({
@@ -61,7 +62,7 @@ authorApp.post("/login", expressAsyncHandler(
         }
         else{
         // create jwt token and encode it
-        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:30});
+        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:'1d'});
         // send res
         res.send({message:"login success",token:signedToken,user:dbuser});
         }
@@ -71,7 +72,8 @@ authorApp.post("/login", expressAsyncHandler(
 
 // adding new article by author
 
-authorApp.post("/article",verifyToken,expressAsyncHandler(async(req,res)=>{
+authorApp.post("/article",expressAsyncHandler(async(req,res)=>{
+  console.log("article",req);
   // get new article from the client
   const newarticle=req.body;
   // post data to article collection
@@ -82,7 +84,7 @@ authorApp.post("/article",verifyToken,expressAsyncHandler(async(req,res)=>{
 
 // modify article by author
 
-authorApp.put("/article",verifyToken,expressAsyncHandler(async(req,res)=>{
+authorApp.put("/article",expressAsyncHandler(async(req,res)=>{
   // get modified article from the client
   const modifiedarticle=req.body;
   // update by article id
@@ -92,7 +94,7 @@ authorApp.put("/article",verifyToken,expressAsyncHandler(async(req,res)=>{
 
 // delete an article by article id
 
-authorApp.put("/article/:articleid",verifyToken,expressAsyncHandler(async(req,res)=>{
+authorApp.put("/article/:articleid",expressAsyncHandler(async(req,res)=>{
   // get article id from url
   const articleIdFromUrl=req.params.articleid;
   // get article
@@ -104,7 +106,7 @@ authorApp.put("/article/:articleid",verifyToken,expressAsyncHandler(async(req,re
 
 // read articles of the author
 
-authorApp.get("/articles/:username",verifyToken,expressAsyncHandler(async(req,res)=>{
+authorApp.get("/articles/:username",expressAsyncHandler(async(req,res)=>{
   // get authors name from the url
   const authorname=req.params.username;
   // get articles whoe status is true

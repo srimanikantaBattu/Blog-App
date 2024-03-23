@@ -1,21 +1,42 @@
-.articleHome{
+/* .articleHome{
     text-align: center;
-}
-.articleHome .artcleImage{
-   
-    max-width: 500px;
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px grey;
-}
+} */
 
-.articleHome h1{
+/* .articleHome h1{
    
     color: var(--light-olive);
     padding: 20px;
-}
+} */
 .articleHome p{
     max-width: 900px;
     margin: auto;
     padding: 30px 20px;
+}
+.svideo{
+    /* width: 100%; */
+    height: 85vh;
+}
+
+  .fit-video {
+    /* Position the video absolutely within the main div */
+   /* Align top to 0 */
+    left: 0; /* Align left to 0 */
+    width: 100%; /* Set width to 100% of its container */
+    height: 100%; /* Set height to 100% of its container */
+    object-fit: cover; /* Scale video to cover the container, maintaining aspect ratio */
+  }
+.vcontent{
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    padding: 180px;
+    /* padding-top: 200px; */
+    color: #5e4008;
+    display: flex;
+    flex-direction: column;
+    /* min-width: 400px;
+    max-width: 650px; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }

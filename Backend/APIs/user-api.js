@@ -61,7 +61,7 @@ userApp.post("/login", expressAsyncHandler(
         }
         else{
         // create jwt token and encode it
-        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:30});
+        const signedToken=jwt.sign({username:dbuser.username},process.env.SECRET_KEY,{expiresIn:'1d'});
         // send res
         res.send({message:"login success",token:signedToken,user:dbuser});
         }
@@ -71,7 +71,7 @@ userApp.post("/login", expressAsyncHandler(
 
 
 // get all articles (of all authors)
-userApp.get("/articles",verifyToken,expressAsyncHandler(async(req,res)=>{
+userApp.get("/articles",expressAsyncHandler(async(req,res)=>{
     // get articles collection from express app
     const articlescollection=req.app.get('articlescollection');
     // get all articles
@@ -81,7 +81,7 @@ userApp.get("/articles",verifyToken,expressAsyncHandler(async(req,res)=>{
 
 // post comments for an article by article id
 
-userApp.post("/comment/:articleId",verifyToken,expressAsyncHandler(async(req,res)=>{
+userApp.post("/comment/:articleId",expressAsyncHandler(async(req,res)=>{
   // get usercomment object
   const usercomment=req.body;
   const articleIdFromUrl=req.params.articleId;

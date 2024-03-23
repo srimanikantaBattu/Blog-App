@@ -19,6 +19,7 @@ function AddArticle() {
   })
 
   const postNewArticle = async (article) => {
+    console.log(article)
     article.dateOfCreation = new Date();
     article.dateOfModification = new Date();
     article.articleId = Date.now();
@@ -26,9 +27,9 @@ function AddArticle() {
     article.comments = [];
     article.status = true;
    //make HTTP post req
-   let res=await axiosWithToken.post('http://localhost:4000/author-api/article',article)
+   let res=await axios.post('http://localhost:4000/author-api/article',article);
    console.log(res)
-   if(res.data.message==='New article created'){
+   if(res.data.message==='New Article Created'){
     navigate(`/author-profile/articles-by-author/${currentUser.username}`)
    }else{
     setErr(res.data.message)

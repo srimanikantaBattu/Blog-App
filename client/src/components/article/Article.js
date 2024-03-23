@@ -30,7 +30,7 @@ function Article() {
   const deleteArticle = async() => {
     let art={...currentArticle};
     delete art._id;
-    let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${currentArticle.articleId}`,art)
+    let res=await axios.put(`http://localhost:4000/author-api/article/${currentArticle.articleId}`,art)
     if(res.data.message==='article deleted'){
       setCurrentArticle({...currentArticle,status:res.data.payload})
     }
@@ -39,7 +39,7 @@ function Article() {
   const restoreArticle =async () => {
     let art={...currentArticle};
     delete art._id;
-    let res=await axiosWithToken.put(`http://localhost:4000/author-api/article/${currentArticle.articleId}`,art)
+    let res=await axios.put(`http://localhost:4000/author-api/article/${currentArticle.articleId}`,art)
     if(res.data.message==='article restored'){
       setCurrentArticle({...currentArticle,status:res.data.payload})
     }
@@ -48,7 +48,7 @@ function Article() {
   //add comment top an article by user
   const writeComment = async (commentObj) => {
     commentObj.username = currentUser.username;
-    let res = await axiosWithToken.post(
+    let res = await axios.post(
       `http://localhost:4000/user-api/comment/${state.articleId}`,
       commentObj
     );
@@ -71,7 +71,7 @@ function Article() {
     delete modifiedArticle._id;
 
     //make http put req to save modified article in db
-    let res = await axiosWithToken.put(
+    let res = await axios.put(
       "http://localhost:4000/author-api/article",
       modifiedArticle
     );

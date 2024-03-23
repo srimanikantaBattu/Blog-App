@@ -3,7 +3,7 @@ import './App.css';
 import RootLayout from './RootLayout'
 import {lazy, Suspense} from 'react'
 import Home from './components/home/Home';
-import Signup from './components/login/Login';
+import Signup from './components/signup/Signup';
 import Signin from './components/signin/Signin';
 import UserProfile from './components/user-profile/UserProfile';
 import AuthorProfile from './components/author-profile/AuthorProfile'

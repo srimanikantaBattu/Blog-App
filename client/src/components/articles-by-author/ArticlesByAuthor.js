@@ -16,6 +16,7 @@ function ArticlesByAuthor() {
     let res=await axiosWithToken.get(`http://localhost:4000/author-api/articles/${currentUser.username}`)
     console.log(res)
     setArticlesList(res.data.payload)
+    console.log("articlesList:", articlesList);
   }
 
 
